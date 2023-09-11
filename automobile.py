@@ -1,6 +1,6 @@
 import pandas as pd
 
-def extract(file_name):
+def extract(file_name: str):
     df = pd.read_excel(file_name)
     return df
 
