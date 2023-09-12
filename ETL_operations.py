@@ -1,5 +1,4 @@
 import pandas as pd
-import os
 from os import listdir
 
 class ETL:
@@ -20,6 +19,10 @@ class ETL:
                 'Hwy CO2 Rounded Adjusted', 'Comb CO2 Rounded Adjusted (as shown on FE Label)']
         
         return df[cols]
+    
+    def change_cases(df):
+        df.loc[df["Mfr Name"] == "aston martin", "Mfr Name"] = df["Mfr Name"].str.title()
+        return df
 
     def rename(dataframe):
         dataframe.rename(
@@ -34,9 +37,4 @@ class ETL:
 
     def load(targetfile, data_to_load):
         data_to_load.to_csv(targetfile, index=False)
-        # Try to delete the file.
-        try:
-            os.remove(file)
-        except OSError as e:
-            # If it fails, inform the user.
-            print("Error: %s - %s." % (e.filename, e.strerror))
+        

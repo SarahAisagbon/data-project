@@ -2,13 +2,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-car_df =  pd.read_excel('2015 - Dataset(Assessment).xls')
+car_df =  pd.read_csv('2015 - Dataset.csv')
 print(car_df.dtypes)
 
 #1. Find the car manufacturer, which contains most quantity of car models.
-#df = car_df.groupby('Mfr Name')['Carline'].nunique().plot(kind = 'bar')
-#plt.show()
+car_df.groupby('Mfr Name')['Carline'].nunique().plot(kind ='bar')
+plt.show()
 
 #2. Find the top average fuel economy for the city and highway driving from the given data set.
 df2 = car_df.copy()
@@ -103,4 +102,3 @@ plt.legend()
 plt.show()
 """
 
-print(car_df.isnull().sum())
