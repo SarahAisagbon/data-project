@@ -1,10 +1,10 @@
 from ETL_operations import ETL
-import os
-import glob
 import pandas as pd
+import os
 
 def main():
-    filenames = ETL.find_xlsx_filenames("/Users/sarahaisagbon/data-project")
+    path = os.path.abspath(os.getcwd())
+    filenames = ETL.find_filenames(path)
     filenames = sorted(filenames)
     new_files = ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"]
     x = (file for file in new_files)
@@ -27,7 +27,8 @@ def main():
 
 def store():
     # list all csv files only
-    csv_files = ETL.find_xlsx_filenames("/Users/sarahaisagbon/data-project", ".csv")
+    path = os.path.abspath(os.getcwd())
+    csv_files = ETL.find_filenames(path, ".csv")
     csv_files.sort()
     print(csv_files)
     print(len([pd.read_csv(file) for file in csv_files ]))

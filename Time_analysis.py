@@ -18,16 +18,15 @@ plt.show()
 """
 
 """
-#3. Find the car manufacturer, which contains most quantity of car models.
+#3. Find the quantity of car models for Aston Martin each year.
 astondf = car_df[car_df['Mfr Name'] == 'Aston Martin']
 astondf.groupby(['Model Year'])['Carline'].nunique().plot()
 plt.show()
 """
 
-fiftdf = car_df[car_df['Model Year'] == '2015']
-print(fiftdf.head())
-#fiftdf.groupby('Mfr Name')['Carline'].nunique().plot(kind ='bar')
-twendf = car_df[car_df['Model Year'] == '2024']
-#twendf.groupby('Mfr Name')['Carline'].nunique().plot(kind ='bar')
-print(twendf.head())
+"""
+#4. Find the car manufacturer, which contains most quantity of car models.
+"""
+car_df.groupby(['Model Year', 'Mfr Name'])['Carline'].nunique().plot()
+plt.show()
 

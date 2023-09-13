@@ -2,7 +2,7 @@ import pandas as pd
 from os import listdir
 
 class ETL:
-    def find_xlsx_filenames(path_to_dir, suffix=".xlsx" ):
+    def find_filenames(path_to_dir, suffix=".xlsx" ):
         filenames = listdir(path_to_dir)
         return [filename for filename in filenames if filename.endswith( suffix )]
 
