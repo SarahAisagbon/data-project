@@ -30,7 +30,6 @@ def store():
     path = os.path.abspath(os.getcwd())
     csv_files = ETL.find_filenames(path, ".csv")
     csv_files.sort()
-    print(csv_files)
     print(len([pd.read_csv(file) for file in csv_files ]))
     df = pd.concat([pd.read_csv(file) for file in csv_files ], ignore_index=True)
     ETL.load("Dataset.csv", df)
