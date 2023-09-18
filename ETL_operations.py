@@ -21,9 +21,14 @@ class ETL:
         return df[cols]
     
     def change_cases(df):
-        df.loc[df["Mfr Name"] == "aston martin", "Mfr Name"] = df["Mfr Name"].str.title()
+        df.loc[df["Mfr Name"] != "BMW", "Mfr Name"] = df["Mfr Name"].str.title()
+        df.loc[df["Division"] != "BMW", "Division"] = df["Division"].str.title()
         return df
-
+    
+    def wrap(df):
+        df["Carline Class Desc"] = df["Carline Class Desc"].str.wrap(25)
+        return df
+    
     def rename(dataframe):
         dataframe.rename(
             columns={'Eng Displ': 'Engine Displacement', '# Cyl': '# Cylinders', 'City FE (Guide) - Conventional Fuel': 'City FE', 
